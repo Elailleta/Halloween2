@@ -10,15 +10,17 @@ public class PlayerController : MonoBehaviour {
     private int count;
     public Text CountText;
     public Text WinText;
+    public Text SpecialText;
+    public GameObject wall;
 
-    // Use this for initialization
+    
     void Start() {
         rb = GetComponent<Rigidbody>();
         count = 0;
         SetCountText();
     }
 
-    // Update is called once per frame
+    
     void FixedUpdate() {
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
@@ -42,6 +44,12 @@ public class PlayerController : MonoBehaviour {
             count = count + 100;
             SetCountText();
         }
+        if (other.gameObject.CompareTag("special"))
+        {
+            other.gameObject.SetActive(false);
+            SetSpecialText();
+            wall.SetActive(false);
+        }
     }
 
     void SetCountText(){
@@ -50,6 +58,13 @@ public class PlayerController : MonoBehaviour {
         {
             WinText.text = "You Win!";
             speed = speed - 10; 
+        }
+    }
+    void SetSpecialText()
+    {
+        if ("special" != null)
+        {
+            SpecialText.text = "Special: 1";
         }
     }
 }
