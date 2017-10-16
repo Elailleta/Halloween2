@@ -9,6 +9,8 @@ public class CameraController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        float offsetX = transform.position.x - Player.transform.position.x;
+        float offsetZ = transform.position.z - Player.transform.position.z;
         offset = transform.position - Player.transform.position;
 	}
 	
