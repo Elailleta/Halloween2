@@ -14,8 +14,10 @@ public class PlayerController : MonoBehaviour {
     public Text WinText;
     public Text SpecialText;
     public Text HealthText;
+    public Text LoseText;
     public GameObject wall;
-
+    public bool isArmed;
+    public bool swing;
     public bool isGrounded;
 
     void OnCollisionStay(Collision coll)
@@ -48,13 +50,8 @@ public class PlayerController : MonoBehaviour {
     void FixedUpdate() {
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
-
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-
         rb.AddForce(movement * speed);
-
-
-       
     }
 
     private void OnTriggerEnter(Collider other)
@@ -79,6 +76,22 @@ public class PlayerController : MonoBehaviour {
             wall.SetActive(false);
             
         }
+        if (other.gameObject.CompareTag("enemy"))
+        {
+            health = health - 3;
+            SetHealthText();
+        }
+        if (other.gameObject.CompareTag("lava"))
+        {
+            health = health - health;
+            SetHealthText();
+            SetLoseText();
+        }
+        if (other.gameObject.CompareTag("weapon"))
+        {
+            isArmed = true;
+            other.gameObject.SetActive(false);
+        }
     }
 
     void SetCountText(){
@@ -101,5 +114,14 @@ public class PlayerController : MonoBehaviour {
     void SetHealthText()
     {
         HealthText.text = "Health : " + health.ToString() + " / 100";
+    }
+
+    void SetLoseText()
+    {
+        if (health <= 0)
+        {
+            LoseText.text = "You have lost.";
+            count = count-count ;
+        }
     }
 }

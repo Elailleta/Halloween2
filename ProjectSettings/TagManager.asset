@@ -8,6 +8,9 @@ TagManager:
   - specialpickup
   - wall
   - special
+  - enemy
+  - lava
+  - weapon
   layers:
   - Default
   - TransparentFX
