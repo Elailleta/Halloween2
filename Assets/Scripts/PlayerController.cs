@@ -8,16 +8,40 @@ public class PlayerController : MonoBehaviour {
     public float speed;
     private Rigidbody rb;
     private int count;
+    private int health;
+    private int special;
     public Text CountText;
     public Text WinText;
     public Text SpecialText;
+    public Text HealthText;
     public GameObject wall;
 
-    
+    public bool isGrounded;
+
+    void OnCollisionStay(Collision coll)
+    {
+        isGrounded = true;
+        if (Input.GetButtonDown("Jump"))
+        {
+            rb.velocity = new Vector3(0, 10, 0);
+        }
+    }
+    void OnCollisionExit(Collision coll)
+    {
+        if (isGrounded)
+        {
+            isGrounded = false;
+        }
+    }
+
     void Start() {
         rb = GetComponent<Rigidbody>();
         count = 0;
+        special = 0;
+        health = 100; 
         SetCountText();
+        SetHealthText();
+        SetSpecialText();
     }
 
     
@@ -30,10 +54,7 @@ public class PlayerController : MonoBehaviour {
         rb.AddForce(movement * speed);
 
 
-        if (Input.GetButtonDown("Jump"))
-        {
-            rb.velocity = new Vector3(0, 5, 0);
-        }
+       
     }
 
     private void OnTriggerEnter(Collider other)
@@ -53,8 +74,10 @@ public class PlayerController : MonoBehaviour {
         if (other.gameObject.CompareTag("special"))
         {
             other.gameObject.SetActive(false);
+            special = special + 1;
             SetSpecialText();
             wall.SetActive(false);
+            
         }
     }
 
@@ -68,9 +91,15 @@ public class PlayerController : MonoBehaviour {
     }
     void SetSpecialText()
     {
-        if ("special" != null)
+        SpecialText.text = "Special: ";
+        if (special == 1)
         {
             SpecialText.text = "Special: 1";
         }
+    }
+    
+    void SetHealthText()
+    {
+        HealthText.text = "Health : " + health.ToString() + " / 100";
     }
 }
