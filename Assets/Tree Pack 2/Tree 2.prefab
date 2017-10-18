@@ -43,7 +43,7 @@ Material:
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -88,7 +88,7 @@ Material:
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Name: Tree Data
   m_EditorClassIdentifier: 
   _uniqueID: 253
-  materialHash: 57a66cf0bc67f9b7b8067033de9c5065215482368
+  materialHash: a25ec7e280fcc0db5638907a0484234b215482368
   root:
     _uniqueID: 1
     seed: 1234
@@ -386,17 +386,17 @@ MonoBehaviour:
     rootSpread: 5
     groundOffset: 0
     rootMatrix:
-      e00: 1
-      e01: 0
-      e02: 0
+      e00: 0.11464802
+      e01: 0.000000018235637
+      e02: 0.9934062
       e03: 0
-      e10: 0
+      e10: -0.00000006525065
       e11: 1
-      e12: 0
+      e12: -0.000000010826164
       e13: 0
-      e20: 0
-      e21: 0
-      e22: 1
+      e20: -0.9934062
+      e21: -0.0000000635792
+      e22: 0.11464802
       e23: 0
       e30: 0
       e31: 0
@@ -2773,17 +2773,17 @@ MonoBehaviour:
     pitch: -0
     rotation: {x: 0, y: 0, z: 0, w: 1}
     matrix:
-      e00: 1
-      e01: 0
-      e02: 0
+      e00: 0.11464802
+      e01: 0.000000018235637
+      e02: 0.9934062
       e03: 0
-      e10: 0
+      e10: -0.00000006525065
       e11: 1
-      e12: 0
+      e12: -0.000000010826164
       e13: 0
-      e20: 0
-      e21: 0
-      e22: 1
+      e20: -0.9934062
+      e21: -0.0000000635792
+      e22: 0.11464802
       e23: 0
       e30: 0
       e31: 0
