@@ -11,12 +11,8 @@ TagManager:
   - enemy
   - lava
   - weapon
-  - enemy2
-  - enemy3
-  - enemy4
-  - enemy5
-  - enemy6
-  - enemy7
+  - health
+  - base
   layers:
   - Default
   - TransparentFX

@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour {
     public Text SpecialText;
     public Text HealthText;
     public Text LoseText;
+    public Text DontText;
     public GameObject wall;
     public bool isArmed;
     public bool swing;
@@ -82,36 +83,6 @@ public class PlayerController : MonoBehaviour {
             health = health - 3;
             SetHealthText();
         }
-        if (other.gameObject.CompareTag("enemy2"))
-        {
-            health = health - 3;
-            SetHealthText();
-        }
-        if (other.gameObject.CompareTag("enemy3"))
-        {
-            health = health - 3;
-            SetHealthText();
-        }
-        if (other.gameObject.CompareTag("enemy4"))
-        {
-            health = health - 3;
-            SetHealthText();
-        }
-        if (other.gameObject.CompareTag("enemy5"))
-        {
-            health = health - 3;
-            SetHealthText();
-        }
-        if (other.gameObject.CompareTag("enemy6"))
-        {
-            health = health - 3;
-            SetHealthText();
-        }
-        if (other.gameObject.CompareTag("enemy7"))
-        {
-            health = health - 3;
-            SetHealthText();
-        }
         if (other.gameObject.CompareTag("lava"))
         {
             health = health - health;
@@ -119,8 +90,7 @@ public class PlayerController : MonoBehaviour {
             SetLoseText();
         }
         if (other.gameObject.CompareTag("weapon"))
-        {
-            
+        { 
             this.isArmed = true;
             other.gameObject.SetActive(false);
         }
@@ -131,36 +101,20 @@ public class PlayerController : MonoBehaviour {
                 other.gameObject.SetActive(false);
                 health = health + 3;
             }
-            if (other.gameObject.CompareTag("enemy2"))
-            {
-                other.gameObject.SetActive(false);
-                health = health + 3;
-            }
-            if (other.gameObject.CompareTag("enemy3"))
-            {
-                other.gameObject.SetActive(false);
-                health = health + 3;
-            }
-            if (other.gameObject.CompareTag("enemy4"))
-            {
-                other.gameObject.SetActive(false);
-                health = health + 3;
-            }
-            if (other.gameObject.CompareTag("enemy5"))
-            {
-                other.gameObject.SetActive(false);
-                health = health + 3;
-            }
-            if (other.gameObject.CompareTag("enemy6"))
-            {
-                other.gameObject.SetActive(false);
-                health = health + 3;
-            }
-            if (other.gameObject.CompareTag("enemy7"))
-            {
-                other.gameObject.SetActive(false);
-                health = health + 3;
-            }
+        }
+        if (other.gameObject.CompareTag("health"))
+        {
+            other.gameObject.SetActive(false);
+            health = 100;
+            SetHealthText();
+        }
+        if (other.gameObject.CompareTag("base"))
+        {
+            health = health - health;
+            SetHealthText();
+            speed = speed - 10;
+            SetLoseText();
+            SetDontText();
         }
     }
 
@@ -193,5 +147,9 @@ public class PlayerController : MonoBehaviour {
             LoseText.text = "You have lost.";
             count = count-count ;
         }
+    }
+    void SetDontText()
+    {
+        DontText.text = "Dont jump out.";
     }
 }
