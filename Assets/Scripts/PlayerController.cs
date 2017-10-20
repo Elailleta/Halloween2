@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour {
     public Text DontText;
     public GameObject wall;
     public bool isArmed;
-    public bool swing;
+    public bool armour;
     public bool isGrounded;
 
     void OnCollisionStay(Collision coll)
@@ -80,8 +80,11 @@ public class PlayerController : MonoBehaviour {
         }
         if (other.gameObject.CompareTag("enemy"))
         {
-            health = health - 3;
-            SetHealthText();
+            if (armour == false)
+            {
+                health = health - 3;
+                SetHealthText();
+            }
         }
         if (other.gameObject.CompareTag("lava"))
         {
@@ -115,6 +118,11 @@ public class PlayerController : MonoBehaviour {
             speed = speed - 10;
             SetLoseText();
             SetDontText();
+        }
+        if (other.gameObject.CompareTag("shield"))
+        {
+            this.armour = true;
+            other.gameObject.SetActive(false);
         }
     }
 

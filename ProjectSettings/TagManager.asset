@@ -13,6 +13,7 @@ TagManager:
   - weapon
   - health
   - base
+  - shield
   layers:
   - Default
   - TransparentFX
