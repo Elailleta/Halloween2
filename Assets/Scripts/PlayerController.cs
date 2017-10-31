@@ -124,6 +124,11 @@ public class PlayerController : MonoBehaviour {
             this.armour = true;
             other.gameObject.SetActive(false);
         }
+        if (health <= 0)
+        {
+            speed = speed - speed;
+            SetLoseText();
+        }
     }
 
     void SetCountText(){
